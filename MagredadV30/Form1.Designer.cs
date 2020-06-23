@@ -36,13 +36,15 @@
             this.columsConsecutivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnsMagredad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnsGrasa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columsMusculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.columsHora = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtConsecutivo = new System.Windows.Forms.TextBox();
             this.txtMagredad = new System.Windows.Forms.TextBox();
             this.txtGrasa = new System.Windows.Forms.TextBox();
-            this.chkIncremento = new System.Windows.Forms.CheckBox();
+            this.chkAutomatico = new System.Windows.Forms.CheckBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnAbrir = new System.Windows.Forms.Button();
             this.lbldesarrollo = new System.Windows.Forms.Label();
@@ -63,7 +65,7 @@
             // lblhora
             // 
             this.lblhora.AutoSize = true;
-            this.lblhora.Location = new System.Drawing.Point(12, 89);
+            this.lblhora.Location = new System.Drawing.Point(27, 91);
             this.lblhora.Name = "lblhora";
             this.lblhora.Size = new System.Drawing.Size(28, 13);
             this.lblhora.TabIndex = 0;
@@ -75,10 +77,12 @@
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.columsConsecutivo,
             this.columnsMagredad,
-            this.columnsGrasa});
+            this.columnsGrasa,
+            this.columsMusculo,
+            this.columsHora});
             this.dgvDatos.Location = new System.Drawing.Point(109, 27);
             this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.Size = new System.Drawing.Size(346, 349);
+            this.dgvDatos.Size = new System.Drawing.Size(545, 349);
             this.dgvDatos.TabIndex = 1;
             // 
             // columsConsecutivo
@@ -96,10 +100,20 @@
             this.columnsGrasa.HeaderText = "Grasa";
             this.columnsGrasa.Name = "columnsGrasa";
             // 
+            // columsMusculo
+            // 
+            this.columsMusculo.HeaderText = "Musculo";
+            this.columsMusculo.Name = "columsMusculo";
+            // 
+            // columsHora
+            // 
+            this.columsHora.HeaderText = "Hora";
+            this.columsHora.Name = "columsHora";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(473, 9);
+            this.label1.Location = new System.Drawing.Point(657, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 13);
             this.label1.TabIndex = 2;
@@ -108,7 +122,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(473, 394);
+            this.label2.Location = new System.Drawing.Point(657, 394);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 3;
@@ -117,7 +131,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(473, 202);
+            this.label3.Location = new System.Drawing.Point(657, 202);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 4;
@@ -126,7 +140,7 @@
             // txtConsecutivo
             // 
             this.txtConsecutivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConsecutivo.Location = new System.Drawing.Point(476, 27);
+            this.txtConsecutivo.Location = new System.Drawing.Point(660, 27);
             this.txtConsecutivo.Name = "txtConsecutivo";
             this.txtConsecutivo.Size = new System.Drawing.Size(223, 158);
             this.txtConsecutivo.TabIndex = 5;
@@ -134,7 +148,7 @@
             // txtMagredad
             // 
             this.txtMagredad.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMagredad.Location = new System.Drawing.Point(476, 425);
+            this.txtMagredad.Location = new System.Drawing.Point(660, 425);
             this.txtMagredad.Name = "txtMagredad";
             this.txtMagredad.Size = new System.Drawing.Size(223, 158);
             this.txtMagredad.TabIndex = 6;
@@ -142,30 +156,31 @@
             // txtGrasa
             // 
             this.txtGrasa.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGrasa.Location = new System.Drawing.Point(476, 218);
+            this.txtGrasa.Location = new System.Drawing.Point(660, 218);
             this.txtGrasa.Name = "txtGrasa";
             this.txtGrasa.Size = new System.Drawing.Size(223, 158);
             this.txtGrasa.TabIndex = 7;
             // 
-            // chkIncremento
+            // chkAutomatico
             // 
-            this.chkIncremento.AutoSize = true;
-            this.chkIncremento.Location = new System.Drawing.Point(620, 5);
-            this.chkIncremento.Name = "chkIncremento";
-            this.chkIncremento.Size = new System.Drawing.Size(79, 17);
-            this.chkIncremento.TabIndex = 8;
-            this.chkIncremento.Text = "Incremento";
-            this.chkIncremento.UseVisualStyleBackColor = true;
+            this.chkAutomatico.AutoSize = true;
+            this.chkAutomatico.Location = new System.Drawing.Point(835, 4);
+            this.chkAutomatico.Name = "chkAutomatico";
+            this.chkAutomatico.Size = new System.Drawing.Size(48, 17);
+            this.chkAutomatico.TabIndex = 8;
+            this.chkAutomatico.Text = "Auto";
+            this.chkAutomatico.UseVisualStyleBackColor = true;
             // 
             // btnAgregar
             // 
             this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(192, 425);
+            this.btnAgregar.Location = new System.Drawing.Point(285, 425);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(160, 61);
             this.btnAgregar.TabIndex = 9;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnAbrir
             // 
@@ -200,12 +215,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 595);
+            this.ClientSize = new System.Drawing.Size(895, 595);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lbldesarrollo);
             this.Controls.Add(this.btnAbrir);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.chkIncremento);
+            this.Controls.Add(this.chkAutomatico);
             this.Controls.Add(this.txtGrasa);
             this.Controls.Add(this.txtMagredad);
             this.Controls.Add(this.txtConsecutivo);
@@ -214,10 +229,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.lblhora);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Magredad Canales";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
@@ -231,21 +248,23 @@
         private System.Windows.Forms.Timer tmrHora;
         private System.Windows.Forms.Label lblhora;
         private System.Windows.Forms.DataGridView dgvDatos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columsConsecutivo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnsMagredad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn columnsGrasa;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtConsecutivo;
         private System.Windows.Forms.TextBox txtMagredad;
         private System.Windows.Forms.TextBox txtGrasa;
-        private System.Windows.Forms.CheckBox chkIncremento;
+        private System.Windows.Forms.CheckBox chkAutomatico;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnAbrir;
         private System.Windows.Forms.Label lbldesarrollo;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columsConsecutivo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnsMagredad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columnsGrasa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columsMusculo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn columsHora;
     }
 }
 

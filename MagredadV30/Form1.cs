@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 
 namespace MagredadV30
 {
@@ -31,9 +32,10 @@ namespace MagredadV30
         //para obtener el registro de hora en la computadora
         private void tmrHora_Tick(object sender, EventArgs e)
         {
-            lblhora.Text = DateTime.Now.ToShortTimeString();
+            lblhora.Text = DateTime.Now.ToLongTimeString();
             
         }
+ 
 
         private void btnAbrir_Click(object sender, EventArgs e)
         {
@@ -81,6 +83,54 @@ namespace MagredadV30
                 writer.WriteLine(contenido);
             }
             writer.Close();
+            int contador = int.Parse(txtConsecutivo.Text) + 1;
+            if (chkAutomatico.Checked)
+            {
+                txtConsecutivo.Text = contador.ToString();
+            }
+        }
+
+        private void chkAutomatico_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkAutomatico.Checked)
+            {
+                txtConsecutivo.Enabled = false;
+            }
+            else
+            {
+                txtConsecutivo.Enabled = true;
+            }
+            
+        }
+
+        private void dgvDatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvDatos.ReadOnly = true;
+        }
+
+        private void dgvDatos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvDatos.ReadOnly = true;
+        }
+
+        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvDatos.ReadOnly = true;
+        }
+
+        private void dgvDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvDatos.ReadOnly = true;
+        }
+
+        private void txtConsecutivo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Char chr = e.KeyChar;
+            if(!Char.IsDigit(chr) && chr != 8)
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten números");
+            }
         }
     }
 }

@@ -82,8 +82,13 @@
             this.columsHora});
             this.dgvDatos.Location = new System.Drawing.Point(109, 27);
             this.dgvDatos.Name = "dgvDatos";
+            this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDatos.Size = new System.Drawing.Size(545, 349);
             this.dgvDatos.TabIndex = 1;
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
+            this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
+            this.dgvDatos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentDoubleClick);
+            this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
             // 
             // columsConsecutivo
             // 
@@ -142,15 +147,16 @@
             this.txtConsecutivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConsecutivo.Location = new System.Drawing.Point(660, 27);
             this.txtConsecutivo.Name = "txtConsecutivo";
-            this.txtConsecutivo.Size = new System.Drawing.Size(223, 158);
+            this.txtConsecutivo.Size = new System.Drawing.Size(388, 158);
             this.txtConsecutivo.TabIndex = 5;
+            this.txtConsecutivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtConsecutivo_KeyPress);
             // 
             // txtMagredad
             // 
             this.txtMagredad.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMagredad.Location = new System.Drawing.Point(660, 425);
             this.txtMagredad.Name = "txtMagredad";
-            this.txtMagredad.Size = new System.Drawing.Size(223, 158);
+            this.txtMagredad.Size = new System.Drawing.Size(388, 158);
             this.txtMagredad.TabIndex = 6;
             // 
             // txtGrasa
@@ -158,18 +164,19 @@
             this.txtGrasa.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGrasa.Location = new System.Drawing.Point(660, 218);
             this.txtGrasa.Name = "txtGrasa";
-            this.txtGrasa.Size = new System.Drawing.Size(223, 158);
+            this.txtGrasa.Size = new System.Drawing.Size(388, 158);
             this.txtGrasa.TabIndex = 7;
             // 
             // chkAutomatico
             // 
             this.chkAutomatico.AutoSize = true;
-            this.chkAutomatico.Location = new System.Drawing.Point(835, 4);
+            this.chkAutomatico.Location = new System.Drawing.Point(1000, 8);
             this.chkAutomatico.Name = "chkAutomatico";
             this.chkAutomatico.Size = new System.Drawing.Size(48, 17);
             this.chkAutomatico.TabIndex = 8;
             this.chkAutomatico.Text = "Auto";
             this.chkAutomatico.UseVisualStyleBackColor = true;
+            this.chkAutomatico.CheckedChanged += new System.EventHandler(this.chkAutomatico_CheckedChanged);
             // 
             // btnAgregar
             // 
@@ -215,7 +222,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 595);
+            this.ClientSize = new System.Drawing.Size(1057, 595);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lbldesarrollo);
             this.Controls.Add(this.btnAbrir);

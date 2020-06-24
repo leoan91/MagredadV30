@@ -42,7 +42,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtConsecutivo = new System.Windows.Forms.TextBox();
-            this.txtMagredad = new System.Windows.Forms.TextBox();
             this.txtGrasa = new System.Windows.Forms.TextBox();
             this.chkAutomatico = new System.Windows.Forms.CheckBox();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -50,6 +49,7 @@
             this.lbldesarrollo = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.lblMagredad = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,14 +151,6 @@
             this.txtConsecutivo.TabIndex = 5;
             this.txtConsecutivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtConsecutivo_KeyPress);
             // 
-            // txtMagredad
-            // 
-            this.txtMagredad.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMagredad.Location = new System.Drawing.Point(660, 425);
-            this.txtMagredad.Name = "txtMagredad";
-            this.txtMagredad.Size = new System.Drawing.Size(388, 158);
-            this.txtMagredad.TabIndex = 6;
-            // 
             // txtGrasa
             // 
             this.txtGrasa.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -218,18 +210,28 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
+            // lblMagredad
+            // 
+            this.lblMagredad.AutoSize = true;
+            this.lblMagredad.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMagredad.Location = new System.Drawing.Point(642, 425);
+            this.lblMagredad.Name = "lblMagredad";
+            this.lblMagredad.Size = new System.Drawing.Size(421, 152);
+            this.lblMagredad.TabIndex = 15;
+            this.lblMagredad.Text = "label4";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1057, 595);
+            this.Controls.Add(this.lblMagredad);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lbldesarrollo);
             this.Controls.Add(this.btnAbrir);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.chkAutomatico);
             this.Controls.Add(this.txtGrasa);
-            this.Controls.Add(this.txtMagredad);
             this.Controls.Add(this.txtConsecutivo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -243,6 +245,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Magredad Canales";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
@@ -259,7 +262,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtConsecutivo;
-        private System.Windows.Forms.TextBox txtMagredad;
         private System.Windows.Forms.TextBox txtGrasa;
         private System.Windows.Forms.CheckBox chkAutomatico;
         private System.Windows.Forms.Button btnAgregar;
@@ -272,6 +274,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnsGrasa;
         private System.Windows.Forms.DataGridViewTextBoxColumn columsMusculo;
         private System.Windows.Forms.DataGridViewTextBoxColumn columsHora;
+        private System.Windows.Forms.Label lblMagredad;
     }
 }
 

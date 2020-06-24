@@ -10,10 +10,13 @@ using System.Windows.Forms;
 using System.IO;
 using System.Threading;
 
+
 namespace MagredadV30
 {
     public partial class Form1 : Form
     {
+        System.IO.Ports.SerialPort Port;
+        bool Isclosed = false;
         private string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"/canales.txt";
         //private string ruta = AppDomain.CurrentDomain.BaseDirectory+ "/canales.txt";
         DateTime hora = DateTime.Today;
@@ -23,11 +26,53 @@ namespace MagredadV30
         {
             InitializeComponent();
             //Console.WriteLine(hora.ToShortTimeString());
+            Port = new System.IO.Ports.SerialPort();
+            Port.PortName = "COM21";
+            Port.BaudRate = 4800;
+            Port.Parity = System.IO.Ports.Parity.Even;
+            Port.StopBits = System.IO.Ports.StopBits.Two;
+            Port.DataBits = 7;
+            Port.ReadTimeout = 10000;
+            try
+            {
+
+                Port.Open();
+            }
+            catch
+            {
+                Console.WriteLine("No se logró abrir el puerto");
+
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Thread Hilo = new Thread(escucharPuerto);
+            Hilo.Start();
+        }
+        private void escucharPuerto()
+        {
+            try
+            {
+                while (!Isclosed)
+                {
+                    
+                    string cadena = Port.ReadLine();
 
+                    lblMagredad.Invoke(new MethodInvoker(
+                        delegate
+                        {
+                            lblMagredad.Text = cadena;
+                        }));
+
+                }
+
+            }
+            catch
+            {
+                Console.WriteLine("buscando datos");
+
+            }
         }
         //para obtener el registro de hora en la computadora
         private void tmrHora_Tick(object sender, EventArgs e)
@@ -131,6 +176,15 @@ namespace MagredadV30
                 e.Handled = true;
                 MessageBox.Show("Solo se permiten números");
             }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Isclosed)
+            {
+                Port.Close();
+            }
+
         }
     }
 }

@@ -42,7 +42,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtConsecutivo = new System.Windows.Forms.TextBox();
-            this.txtGrasa = new System.Windows.Forms.TextBox();
             this.chkAutomatico = new System.Windows.Forms.CheckBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnAbrir = new System.Windows.Forms.Button();
@@ -50,6 +49,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.lblMagredad = new System.Windows.Forms.Label();
+            this.lblGrasa = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,6 +89,8 @@
             this.dgvDatos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentClick);
             this.dgvDatos.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellContentDoubleClick);
             this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
+            this.dgvDatos.UserDeletedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvDatos_UserDeletedRow);
+            this.dgvDatos.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.dgvDatos_UserDeletingRow);
             // 
             // columsConsecutivo
             // 
@@ -151,14 +153,6 @@
             this.txtConsecutivo.TabIndex = 5;
             this.txtConsecutivo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtConsecutivo_KeyPress);
             // 
-            // txtGrasa
-            // 
-            this.txtGrasa.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGrasa.Location = new System.Drawing.Point(660, 218);
-            this.txtGrasa.Name = "txtGrasa";
-            this.txtGrasa.Size = new System.Drawing.Size(388, 158);
-            this.txtGrasa.TabIndex = 7;
-            // 
             // chkAutomatico
             // 
             this.chkAutomatico.AutoSize = true;
@@ -214,24 +208,34 @@
             // 
             this.lblMagredad.AutoSize = true;
             this.lblMagredad.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMagredad.Location = new System.Drawing.Point(642, 425);
+            this.lblMagredad.Location = new System.Drawing.Point(660, 425);
             this.lblMagredad.Name = "lblMagredad";
-            this.lblMagredad.Size = new System.Drawing.Size(421, 152);
+            this.lblMagredad.Size = new System.Drawing.Size(139, 152);
             this.lblMagredad.TabIndex = 15;
-            this.lblMagredad.Text = "label4";
+            this.lblMagredad.Text = "0";
+            // 
+            // lblGrasa
+            // 
+            this.lblGrasa.AutoSize = true;
+            this.lblGrasa.Font = new System.Drawing.Font("Microsoft Sans Serif", 99.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGrasa.Location = new System.Drawing.Point(660, 224);
+            this.lblGrasa.Name = "lblGrasa";
+            this.lblGrasa.Size = new System.Drawing.Size(139, 152);
+            this.lblGrasa.TabIndex = 16;
+            this.lblGrasa.Text = "0";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1057, 595);
+            this.Controls.Add(this.lblGrasa);
             this.Controls.Add(this.lblMagredad);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.lbldesarrollo);
             this.Controls.Add(this.btnAbrir);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.chkAutomatico);
-            this.Controls.Add(this.txtGrasa);
             this.Controls.Add(this.txtConsecutivo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -262,7 +266,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtConsecutivo;
-        private System.Windows.Forms.TextBox txtGrasa;
         private System.Windows.Forms.CheckBox chkAutomatico;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnAbrir;
@@ -275,6 +278,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columsMusculo;
         private System.Windows.Forms.DataGridViewTextBoxColumn columsHora;
         private System.Windows.Forms.Label lblMagredad;
+        private System.Windows.Forms.Label lblGrasa;
     }
 }
 

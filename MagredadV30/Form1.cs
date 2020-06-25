@@ -18,7 +18,6 @@ namespace MagredadV30
         System.IO.Ports.SerialPort Port;
         bool Isclosed = false;
         private string ruta = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)+"/canales.txt";
-        //private string ruta = AppDomain.CurrentDomain.BaseDirectory+ "/canales.txt";
         DateTime hora = DateTime.Today;
         private Canal[] canal = new Canal[] { };
         
@@ -88,6 +87,7 @@ namespace MagredadV30
             {
                 //openFileDialog1.FileName;
                 StreamReader reader = new StreamReader(openFileDialog1.FileName);
+                ruta = openFileDialog1.FileName;
                 string contenido = null;
                 string []contenidoTemp = null;
                 contenido = reader.ReadLine();
@@ -108,6 +108,7 @@ namespace MagredadV30
             {
                 //saveFileDialog1.FileName;
                 StreamWriter writer = new StreamWriter(saveFileDialog1.FileName, false);
+                ruta = saveFileDialog1.FileName; 
                 string contenido = null;
                 for (int i = 0; i < dgvDatos.Rows.Count - 1; i++)
                 {
@@ -117,23 +118,37 @@ namespace MagredadV30
                 writer.Close();
             }
         }
-
+        /*
+         Aquí se trabaja en el botón agregar.
+        -------------------------------------
+        -------------------------------------
+        -------------------------------------
+        -------------------------------------
+         */
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            StreamWriter writer = new StreamWriter(ruta,false);
+            //se revisa si existen datos y si son diferentes. Para escribir el nuevo string.
+            StreamWriter writer2 = new StreamWriter(ruta,false);
             string contenido = null;
             for (int i = 0; i < dgvDatos.Rows.Count-1; i++)
             {
                 contenido = string.Format("{0},{1},{2}", dgvDatos.Rows[i].Cells[0].Value, dgvDatos.Rows[i].Cells[1].Value, dgvDatos.Rows[i].Cells[2].Value);
-                writer.WriteLine(contenido);
+                writer2.WriteLine(contenido);
             }
-            writer.Close();
-            int contador = int.Parse(txtConsecutivo.Text) + 1;
-            if (chkAutomatico.Checked)
+            
+
+            if(txtConsecutivo.TextLength > 0)
             {
-                txtConsecutivo.Text = contador.ToString();
+                int contador = int.Parse(txtConsecutivo.Text) + 1;
+                if (chkAutomatico.Checked)
+                {
+                    txtConsecutivo.Text = contador.ToString();
+                }
             }
+
+            writer2.Close();
         }
+  
 
         private void chkAutomatico_CheckedChanged(object sender, EventArgs e)
         {
@@ -185,6 +200,53 @@ namespace MagredadV30
                 Port.Close();
             }
 
+        }
+
+        private void dgvDatos_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
+        {
+            if (!e.Row.IsNewRow)
+            {
+                DialogResult response = MessageBox.Show("Quieres eliminar estos datos?","Está seguro?", MessageBoxButtons.YesNo) ;
+
+                if (response == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    //saveFileDialog1.FileName;
+                    //StreamWriter writer = new StreamWriter(ruta, false);
+                    //string contenido = null;
+                    //string tempContenido = null;
+                    //for (int i = 0; i < dgvDatos.Rows.Count - 1; i++)
+                    //{
+                    //    contenido = string.Format("{0},{1},{2}", dgvDatos.Rows[i].Cells[0].Value, dgvDatos.Rows[i].Cells[1].Value, dgvDatos.Rows[i].Cells[2].Value);
+                    //    //Console.WriteLine(con)
+                    //    writer.WriteLine(contenido);
+                    //    tempContenido = tempContenido + contenido +"\n";
+                    //}
+                    //Console.WriteLine(tempContenido);
+                    //writer.Close();
+                }
+                
+                    
+            }
+        }
+
+        private void dgvDatos_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            StreamWriter writer = new StreamWriter(ruta, false);
+            string contenido = null;
+            string tempContenido = null;
+            for (int i = 0; i < dgvDatos.Rows.Count - 1; i++)
+            {
+                contenido = string.Format("{0},{1},{2}", dgvDatos.Rows[i].Cells[0].Value, dgvDatos.Rows[i].Cells[1].Value, dgvDatos.Rows[i].Cells[2].Value);
+                //Console.WriteLine(con)
+                writer.WriteLine(contenido);
+                tempContenido = tempContenido + contenido + "\n";
+            }
+            Console.WriteLine(tempContenido);
+            writer.Close();
         }
     }
 }
